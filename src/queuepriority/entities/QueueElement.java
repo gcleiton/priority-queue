@@ -1,7 +1,6 @@
 package queuepriority.entities;
 
 public class QueueElement<E extends Object> implements Comparable<QueueElement<E>> {
-
     private E element;
     private int priority;
 

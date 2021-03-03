@@ -1,9 +1,7 @@
 package queuepriority;
 
 class QueueTest {
-
     public static void main(String[] args) {
-
         PriorityQueue<String> queue = new PriorityQueue<>();
 
         queue.add("Joao");
@@ -14,7 +12,5 @@ class QueueTest {
         queue.add("Enzo", 2);
 
         queue.show();
-
     }
-
 }

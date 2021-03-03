@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import queuepriority.contracts.PriorityQueueInterface;
 
 public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E> {
-
     private ArrayList<QueueElement<E>> queue;
 
     public static final int MAX_SIZE = 99;
@@ -72,5 +71,4 @@ public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E
     private QueueElement<E> makeQueueElement(E element, int priority) {
         return new QueueElement<E>(element, priority);
     }
-
 }
