@@ -5,29 +5,29 @@ import java.util.ArrayList;
 import queuepriority.contracts.PriorityQueueInterface;
 
 public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E> {
-    
-    private ArrayList<QueueElement> queue;
-    
+
+    private ArrayList<QueueElement<E>> queue;
+
     public static final int MAX_SIZE = 99;
-        
-    public PriorityQueue () {
+
+    public PriorityQueue() {
         queue = new ArrayList<>();
     }
-    
-    public void add (E element) {
-        QueueElement queueElement = makeQueueElement(element, MAX_SIZE);
+
+    public void add(E element) {
+        QueueElement<E> queueElement = makeQueueElement(element, MAX_SIZE);
         queue.add(queueElement);
     }
-   
+
     @Override
-    public void add (E element, int priority) {   
+    public void add(E element, int priority) {
         if (priority > MAX_SIZE) {
             System.out.println("A prioridade não pode ser maior que " + MAX_SIZE + ".");
             return;
         }
-        
-        QueueElement queueElement = makeQueueElement(element, priority);
-             
+
+        QueueElement<E> queueElement = makeQueueElement(element, priority);
+
         int i = 0;
         for (i = 0; i < queue.size(); i++) {
             if (queueElement.compareTo(this.queue.get(i)) == -1) {
@@ -39,19 +39,19 @@ public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E
     }
 
     @Override
-    public QueueElement remove() {
+    public QueueElement<E> remove() {
         if (isEmpty()) {
             System.out.println("Fila vazia! Elemento não removido.");
             return null;
         }
-        
-        QueueElement removedElement = queue.remove(0);
-        
+
+        QueueElement<E> removedElement = queue.remove(0);
+
         return removedElement;
     }
-    
+
     @Override
-    public boolean isEmpty () {
+    public boolean isEmpty() {
         return queue.isEmpty();
     }
 
@@ -61,7 +61,7 @@ public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E
             System.out.println("Fila vazia. Não há elementos para impressão.");
             return;
         }
-        
+
         System.out.print("Fila: ");
         queue.forEach((element) -> {
             System.out.print("\t" + element.toString());
@@ -69,8 +69,8 @@ public class PriorityQueue<E extends Object> implements PriorityQueueInterface<E
         System.out.println();
     }
 
-    private QueueElement makeQueueElement (E element, int priority) {
-        return new QueueElement(element, priority);
+    private QueueElement<E> makeQueueElement(E element, int priority) {
+        return new QueueElement<E>(element, priority);
     }
 
 }

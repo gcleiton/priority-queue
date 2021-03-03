@@ -1,29 +1,29 @@
 package queuepriority.entities;
 
-public class QueueElement<E extends Object> implements Comparable<QueueElement> {
-    
+public class QueueElement<E extends Object> implements Comparable<QueueElement<E>> {
+
     private E element;
     private int priority;
-    
-    public QueueElement (E element, int priority) {
+
+    public QueueElement(E element, int priority) {
         this.element = element;
         this.priority = priority;
     }
-    
+
     @Override
-    public int compareTo(QueueElement element) {
+    public int compareTo(QueueElement<E> element) {
         if (this.priority > element.getPriority()) {
             return 1;
-        
+
         } else if (this.priority < element.getPriority()) {
             return -1;
         }
-        
+
         return 0;
     }
-    
+
     @Override
-    public String toString () {
+    public String toString() {
         return element.toString();
     }
 
